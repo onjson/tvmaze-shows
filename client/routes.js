@@ -17,6 +17,12 @@ const LoadableShowInfoPage = Loadable({
   loading: () => null,
 });
 
+const LoadablePageNotFound = Loadable({
+  loader: () =>
+    import(/* webpackChunkName: "pageNotFound" */ './pages/PageNotFound'),
+  loading: () => null,
+});
+
 const routes = [
   {
     key: '1',
@@ -34,6 +40,11 @@ const routes = [
     key: '3',
     path: '/shows/:id',
     component: LoadableShowInfoPage,
+    exact: false,
+  },
+  {
+    key: '4',
+    component: LoadablePageNotFound,
     exact: false,
   },
 ];

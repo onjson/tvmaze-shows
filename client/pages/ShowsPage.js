@@ -9,6 +9,7 @@ import qs from 'query-string';
 
 import SearchForm from '../components/SearchForm';
 import ShowsList from '../components/ShowsList';
+import ShowsNotFound from '../components/ShowsNotFound';
 import { getShowsApi } from '../services/api';
 
 const styles = () => ({
@@ -18,16 +19,20 @@ const styles = () => ({
 });
 
 const ShowsPage = ({ classes, history, location }) => {
-  const [shows, setShows] = useState([]);
+  const [shows, setShows] = useState(null);
+  const [loading, setLoading] = useState(false);
   const queries = qs.parse(location.search);
 
   async function fetchShows(query) {
+    setLoading(true);
     if (!query) {
       setShows([]);
+      setLoading(false);
     } else {
       const res = await getShowsApi(query);
       const data = await res.json();
       setShows(data);
+      setLoading(false);
     }
   }
 
@@ -50,13 +55,24 @@ const ShowsPage = ({ classes, history, location }) => {
           alignItems="stretch"
           className={classes.showsListContainer}
         >
-          <Grid item xs={12}>
-            <Typography component="h2" variant="h4">
-              Shows
-            </Typography>
-          </Grid>
-          <ShowsList shows={shows} />
+          {shows && shows.length > 0 && (
+            <React.Fragment>
+              <Grid item xs={12}>
+                <Typography component="h2" variant="h4">
+                  Shows
+                </Typography>
+              </Grid>
+              <ShowsList shows={shows} />
+            </React.Fragment>
+          )}
         </Grid>
+        {!loading && shows && shows.length === 0 && (
+          <Grid container justify="center">
+            <Grid item lg={4} md={6} sm={8} xs={9}>
+              <ShowsNotFound />
+            </Grid>
+          </Grid>
+        )}
       </Grid>
     </DocumentTitle>
   );

@@ -27,8 +27,8 @@ const SearchPage = ({ classes, history }) => (
       alignItems="center"
     >
       <Grid item lg={6} md={8} sm={10} xs={11}>
-        <Typography variant="h1" className={classes.title}>
-          Search shows
+        <Typography variant="h2" component="h1" className={classes.title}>
+          TVmaze
         </Typography>
         <SearchField push={history.push} />
       </Grid>
