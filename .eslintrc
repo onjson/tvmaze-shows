@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "extends": ["airbnb", "prettier/react", "plugin:prettier/recommended"],
   "parserOptions": {
     "sourceType": "module",
     "allowImportExportEverywhere": false,
@@ -16,7 +16,12 @@
       }
     ],
     "react/jsx-filename-extension": 0,
-    "arrow-body-style": ["error", "never"]
+    "import/prefer-default-export": 0,
+    "arrow-body-style": [
+      "error",
+      "as-needed",
+      { "requireReturnForObjectLiteral": false }
+    ]
   },
   "env": {
     "browser": true
