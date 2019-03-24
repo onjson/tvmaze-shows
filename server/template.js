@@ -64,6 +64,7 @@ export default ({ helmet, content, bundles, mui }) => {
       <head>
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         ${preloadScripts(bundles)}
         ${helmet.link.toString()}
         ${cssLinks()}
