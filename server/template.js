@@ -36,7 +36,7 @@ const cssLinks = () => {
   return Object.keys(assetManifest)
     .filter((file) => file.match(/\.css$/))
     .map((cssFile) => assetManifest[cssFile])
-    .map((cssFilePath) => `<link rel="stylesheet" href="${cssFilePath}">`)
+    .map((cssFilePath) => `<link rel="stylesheet" type="text/css" href="${cssFilePath}">`)
     .join('');
 };
 
@@ -62,6 +62,8 @@ export default ({ helmet, content, bundles, mui }) => {
     <!doctype html>
     <html lang="en" ${htmlAttrs}>
       <head>
+        <meta charset="utf-8">
+        <base href="/">
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
         <meta name="viewport" content="width=device-width, initial-scale=1">

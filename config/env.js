@@ -6,7 +6,7 @@ const packageJson = require('../package.json');
 
 process.env.VERSION = packageJson.version;
 
-const BAKED_IN_ENV_VARS = ['NODE_ENV', 'PUBLIC_URL', 'VERSION'];
+const BAKED_IN_ENV_VARS = ['NODE_ENV', 'PUBLIC_URL', 'VERSION', 'NOW'];
 
 function getAppEnv() {
   const raw = Object.keys(dotenvVars || {}).reduce(

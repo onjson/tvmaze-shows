@@ -59,7 +59,7 @@ function renderApp(req, res) {
       mui,
     });
 
-    res.status(200).send(fullMarkup);
+    res.status(200).set('Content-Type', 'text/html').send(fullMarkup);
   }
 }
 

@@ -1,0 +1,11 @@
+node_modules/
+.gitignore
+.eslintrc
+.nowignore
+babel.config.js
+README*
+scripts/*
+server/*
+client/
+config/*
+webpack.config*
