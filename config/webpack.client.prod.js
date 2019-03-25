@@ -10,6 +10,7 @@ const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const { getAppEnv } = require('./env');
 
@@ -153,7 +154,8 @@ module.exports = {
     new ReactLoadablePlugin({
       filename: 'build/react-loadable.json',
     }),
-  ],
+    process.argv.includes('--analyzed') ? new BundleAnalyzerPlugin() : null
+  ].filter(Boolean),
   node: {
     dgram: 'empty',
     fs: 'empty',

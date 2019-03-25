@@ -7,7 +7,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node scripts/start.js",
     "build": "cross-env NODE_ENV=production node scripts/build.js",
-    "build:analyzed": "cross-env NODE_ENV=production node scripts/build.js --analyzed",
+    "build:analyzed": "yarn build --analyzed",
     "start:prod": "node scripts/startProd.js",
     "deploy": "NOW=true yarn build && now"
   },
@@ -39,7 +39,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "file-loader": "^3.0.1",
     "fs-extra": "^7.0.1",
     "html-webpack-plugin": "^3.2.0",
     "import-glob-loader": "^1.1.0",
@@ -58,7 +57,6 @@
     "webpack-bundle-analyzer": "^3.1.0",
     "webpack-cli": "^3.3.0",
     "webpack-dev-middleware": "^3.6.1",
-    "webpack-dev-server": "^3.2.1",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-manifest-plugin": "^2.0.4",
     "webpack-node-externals": "^1.7.2"
